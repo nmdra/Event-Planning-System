@@ -1,9 +1,8 @@
-package Servlets;
+package Servlets.User;
 
 import Models.User;
 import Utils.UserDbUtils;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serial;
 
 @WebServlet ("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+public class userLoginServlet extends HttpServlet {
+
+	@Serial
+	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,17 +30,12 @@ public class LoginServlet extends HttpServlet {
 		User usr = (UserDbUtils.validateLogin(username, password));
 
 		if (usr != null) {
-			out.println(usr.getEmail());
 			try {
-
-				String loggingSuccess = "Logging Success!";
-				request.setAttribute("loginMsg", loggingSuccess);
 
 				HttpSession session = request.getSession();
 				session.setAttribute("user", usr);
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-				dispatcher.forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/index.jsp");
 
 			} catch (Exception e) {
 

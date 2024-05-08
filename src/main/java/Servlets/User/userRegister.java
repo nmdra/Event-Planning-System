@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.User;
 
 import java.io.*;
 import javax.servlet.*;
@@ -11,7 +11,10 @@ import Utils.UserDbUtils;
 @WebServlet("/userRegister")
 public class userRegister extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
@@ -25,10 +28,13 @@ public class userRegister extends HttpServlet {
         User usr = new User(name, username,email,pass);
 
         if(UserDbUtils.addUser(usr)){
-            out.println("User Successfully added to database.");
+            out.println("<script type='text/javascript'>");
+            out.println("alert('User Successfully added to database.');");
+            out.println("location='Register.jsp'");
+            out.println("</script>");
         };
 
-        request.setAttribute("user", usr);
+//        request.setAttribute("user", usr);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Login.jsp");
         dispatcher.forward(request, response);
     }

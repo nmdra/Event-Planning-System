@@ -25,7 +25,6 @@
             padding: 10px; /* Add padding inside the box */
             border-radius: 10px; /* Optional: rounded corners */
             margin-top: 20vh;
-            box-shadow: aliceblue;
         }
     </style>
     <script type="text/javascript">
@@ -56,41 +55,41 @@
         <h1 class="text-center">Create Account</h1><br>
 
         <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="name">Name</label><br>
-            <input type="text" id="name" name="name" placeholder="Enter the Name" required class="form-control"><br>
-        </div>
+            <div class="form-group col-md-6">
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name" placeholder="Enter the Name" required class="form-control"><br>
+            </div>
 
-        <div class="form-group col-md-6 ">
-            <label for="username">Username</label><br>
-            <input type="text" id="username" name="username" placeholder="Enter the Username" required class="form-control"><br>
+            <div class="form-group col-md-6 ">
+                <label for="username">Username</label><br>
+                <input type="text" id="username" name="username" placeholder="Enter the Username" required class="form-control"><br>
+            </div>
         </div>
-        </div>
-
-        <div class="form-row">
-        <div class="form-group col-md-12">
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email" placeholder="Enter the Email" required class="form-control"><br>
-        </div>
-        </div>
-
 
         <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password" placeholder="Enter the Password" required class="form-control"><br>
+            <div class="form-group col-md-12">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" placeholder="Enter the Email" required class="form-control"><br>
+            </div>
         </div>
 
-        <div class="form-group col-md-6">
-            <label for="password">Confirm Password</label><br>
-            <input type="password" id="confirmPassword" name="rpassword" placeholder="Re-Enter Password" required class="form-control"><br>
-        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password" placeholder="Enter the Password" required class="form-control"><br>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="confirmPassword">Confirm Password</label><br>
+                <input type="password" id="confirmPassword" name="rpassword" placeholder="Re-Enter Password" required class="form-control"><br>
+            </div>
         </div>
 
-<%--        <div class="form-group form-check">--%>
-<%--            <input type="checkbox" class="form-check-input" id="exampleCheck1">--%>
-<%--            <label class="form-check-label" for="exampleCheck1">Check me out</label>--%>
-<%--        </div>--%>
+        <%--        <div class="form-group form-check">--%>
+        <%--            <input type="checkbox" class="form-check-input" id="exampleCheck1">--%>
+        <%--            <label class="form-check-label" for="exampleCheck1">Check me out</label>--%>
+        <%--        </div>--%>
 
 
         <button type="submit" class="btn btn-primary center-block">Submit</button>
