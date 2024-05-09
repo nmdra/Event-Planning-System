@@ -6,6 +6,7 @@ import Utils.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class EventDBUtils {
             //creating connection with the database
             Connection con = DBConnection.connectDB();
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO requestEvent (userId, category, location, datetime, specialReq, attendees) values (?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO Event (userId, category, location, datetime, specialReq, attendees) values (?,?,?,?,?,?)");
 
             ps.setInt(1, event.getUserID());
             ps.setString(2, event.getCategory());
@@ -43,7 +44,7 @@ public class EventDBUtils {
 
         try {
             Connection con = DBConnection.connectDB();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM requestEvent ORDER BY eventId DESC");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Event ORDER BY eventId ASC");
 
             ResultSet rs = ps.executeQuery();
 
@@ -58,7 +59,7 @@ public class EventDBUtils {
                 String attendees = rs.getString("attendees");
 
 
-                Event event = new Event(userID, location, category,attendees, req, datetime);
+                Event event = new Event(eventID, userID, location, category,attendees, req, datetime);
 
                 eventRequests.add(event);
             }
@@ -68,5 +69,32 @@ public class EventDBUtils {
             ex.printStackTrace();
         }
         return eventRequests;
+    }
+
+    public static boolean deleteEvent(String eventId) {
+        try {
+            // Create connection with the database
+            Connection con = DBConnection.connectDB();
+
+            // Prepare the DELETE statement
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Event WHERE eventId = ?");
+
+            // Set the eventId parameter
+            ps.setInt(1, Integer.parseInt(eventId));
+
+
+            // Check if any rows were affected
+            if (ps.executeUpdate() > 0) {
+                System.out.println("Event deleted successfully");
+                return true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return false;
     }
 }

@@ -15,28 +15,28 @@ public class userRegister extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException, ServletException {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
         String name = request.getParameter("name");
-        String username = request.getParameter("username");
         String email = request.getParameter("email");
+        String username = request.getParameter("username");
         String pass = request.getParameter("password");
 
-        User usr = new User(name, username,email,pass);
+        User usr = new User(name, email, username, pass);
 
         if(UserDbUtils.addUser(usr)){
             out.println("<script type='text/javascript'>");
-            out.println("alert('User Successfully added to database.');");
-            out.println("location='Register.jsp'");
+            out.println("alert('Account Created. Please Login');");
+            out.println("location='Login.jsp'");
             out.println("</script>");
         };
 
 //        request.setAttribute("user", usr);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Login.jsp");
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Login.jsp");
+//        dispatcher.forward(request, response);
     }
 }
 

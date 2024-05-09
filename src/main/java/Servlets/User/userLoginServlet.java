@@ -24,10 +24,10 @@ public class userLoginServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 
-		String username = request.getParameter("username");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		User usr = (UserDbUtils.validateLogin(username, password));
+		User usr = (UserDbUtils.validateLogin(email, password));
 
 		if (usr != null) {
 			try {

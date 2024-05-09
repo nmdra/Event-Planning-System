@@ -13,7 +13,7 @@ public class UserDbUtils {
             //creating connection with the database
             Connection con = DBConnection.connectDB();
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users(name, email, username, password) values (?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users(NAME, EMAIL, USERNAME, PASSWORD) VALUES (?,?,?,?)");
 
             ps.setString(1, user.getName());
             ps.setString(2, user.getEmail());
@@ -21,14 +21,15 @@ public class UserDbUtils {
             ps.setString(4, user.getPassword());
 
             if (ps.executeUpdate() > 0) {
-                return false;
+                System.out.println("User added successfully");
+                return true;
             }
 
         } catch (Exception se) {
             se.printStackTrace();
         }
 
-        return true;
+        return false;
     }
 
     public static User validateLogin(String email, String password) {
