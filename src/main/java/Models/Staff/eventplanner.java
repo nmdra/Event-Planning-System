@@ -1,4 +1,4 @@
-package Models;
+package Models.Staff;
 
 public class eventplanner {
 
@@ -81,11 +81,6 @@ public class eventplanner {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-
-
-
-
-
 
 }
 

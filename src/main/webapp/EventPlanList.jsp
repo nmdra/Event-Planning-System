@@ -13,12 +13,12 @@
   <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark">
     <tr>
-      <th>Event Plan ID #</th>
-      <th>Event ID #</th>
-      <th>Event Theme</th>
-      <th>Budget</th>
-      <th>Plan Description</th>
-      <th colspan="2">Actions</th>
+      <th scope="col">Event Plan ID #</th>
+      <th scope="col">Event ID #</th>
+      <th scope="col">Event Theme</th>
+      <th scope="col">Budget</th>
+      <th scope="col">Plan Description</th>
+      <th scope="col" colspan="2">Actions</th>
 
     </tr>
     </thead>
@@ -32,7 +32,7 @@
         <td>${eventPlan.budget}</td>
         <td>${eventPlan.planDescription}</td>
         <td colspan="2">
-        <a href="deleteEventPlan?eventPlanId=${eventPlan.eventPlanId}" class="btn btn-danger btn-sm">Delete</a> <!-- Delete plan button -->
+          <a href="deleteEventPlan?eventPlanId=${eventPlan.eventPlanId}" class="btn btn-danger btn-sm">Delete</a> <!-- Delete plan button -->
           <a href="updateEventPlan?eventPlanId=${eventPlan.eventPlanId}" class="btn btn-primary btn-sm">Update</a> <!-- Delete plan button -->
         </td>
       </tr>

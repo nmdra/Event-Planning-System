@@ -5,6 +5,7 @@ import Models.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDbUtils {
     public static boolean addUser(User user) {
@@ -55,5 +56,25 @@ public class UserDbUtils {
             ex.printStackTrace();
         }
         return user;
+    }
+
+    public static boolean deleteUser(int userId) {
+        // Initialize database connection
+        try (Connection connection = DBConnection.connectDB()) {
+            // Prepare SQL statement to delete user
+            String query = "DELETE FROM users WHERE id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+
+            // Execute the query
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Check if the user was successfully deleted
+            return rowsAffected > 0;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            // Handle any database errors here
+            return false;
+        }
     }
 }
