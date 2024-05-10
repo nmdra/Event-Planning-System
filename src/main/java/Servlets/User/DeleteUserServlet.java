@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet("/DeleteUserServlet")
+@WebServlet("/DeleteUser")
 public class DeleteUserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        response.setContentType("text/html");
+
         // Get the user ID parameter from the request
         String userId = request.getParameter("userId");
 
@@ -20,8 +24,10 @@ public class DeleteUserServlet extends HttpServlet {
         boolean deleted = UserDbUtils.deleteUser(Integer.parseInt(userId));
 
         if (deleted) {
-            // Redirect to a success page or display a success message
-            response.sendRedirect(request.getContextPath() + "/success.jsp");
+            out.println("<script type='text/javascript'>");
+            out.println("alert('User deleted');");
+            out.println("location='Register.jsp'");
+            out.println("</script>");
         } else {
             // Redirect to an error page or display an error message
             response.sendRedirect(request.getContextPath() + "/error.jsp");

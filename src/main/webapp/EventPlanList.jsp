@@ -10,6 +10,9 @@
 <body>
 <div class="container">
   <h1>Event Plan List</h1>
+
+  <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+
   <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark">
     <tr>
@@ -19,7 +22,6 @@
       <th scope="col">Budget</th>
       <th scope="col">Plan Description</th>
       <th scope="col" colspan="2">Actions</th>
-
     </tr>
     </thead>
     <tbody>
@@ -40,5 +42,18 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  document.getElementById('searchInput').addEventListener('keyup', function() {
+    const searchValue = this.value.toLowerCase();
+    const rows = document.querySelectorAll('tbody tr');
+
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      row.style.display = text.includes(searchValue) ? '' : 'none';
+    });
+  });
+</script>
+
 </body>
 </html>

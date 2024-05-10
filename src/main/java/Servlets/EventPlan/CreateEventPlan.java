@@ -20,6 +20,7 @@ public class CreateEventPlan extends HttpServlet {
         response.setContentType("text/html");
 
         // Retrieve form data from the request
+        int userID = Integer.parseInt(request.getParameter("userID"));
         int eventId = Integer.parseInt(request.getParameter("eventId"));
         double budget = Double.parseDouble(request.getParameter("budget"));
         String planDescription = request.getParameter("planDescription");
@@ -28,7 +29,7 @@ public class CreateEventPlan extends HttpServlet {
         System.out.println(eventId + " " + budget + " " + planDescription + " " + theme);
 
         // Create an EventPlan object with the retrieved data
-        EventPlan eventPlan = new EventPlan(eventId,budget,planDescription, theme);
+        EventPlan eventPlan = new EventPlan(eventId,budget,planDescription, theme, userID);
 
         // Add the event plan to the database using the EventPlanDBUtil class
         boolean success = EventPlanDBUtil.addEventPlan(eventPlan);

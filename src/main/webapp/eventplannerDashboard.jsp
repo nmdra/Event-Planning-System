@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Planner-Dashboard</title>
+    <title>Event Planner Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         body {
@@ -62,18 +62,22 @@
 <body>
 
     <div class="container">
-    <form action="staffLogout" method="post">
-       <input type = "submit" name = "logout" value = "Logout" class="btn btn-primary">
-    </form>
         <h1>Event Planner-Dashboard</h1><br><br>
         <div class="dashboard">
             <div class="box" id="event">
-                <h2>event</h2>
+                <h2>Event</h2>
                 <a href="eventList">
                     <input type="button" value="Go">
                 </a>
             </div>
-             
+
+            <div class="box" id="eventPlan">
+                <h2>Plan List</h2>
+                <a href="EventPlanList">
+                    <input type="button" value="Go">
+                </a>
+            </div>
+
             <div class="box" id="profile">
                 <h2>Profile</h2>
                 <a href="eventplannerprofile.jsp">
@@ -81,6 +85,9 @@
                 </a>
             </div>
         </div>
+        <form action="staffLogout" method="post"><br><br>
+            <input type = "submit" name = "logout" value = "Logout" class="btn btn-primary">
+        </form>
     </div>
 </body>
 </html>

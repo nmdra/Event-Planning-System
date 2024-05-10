@@ -20,12 +20,13 @@ public class EventPlanDBUtil {
             // Get a database connection
             Connection conn = DBConnection.connectDB();
             // Create a prepared statement with the SQL query
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO EventPlan (eventId, eventTheme, budget, planDescription) VALUES (?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO EventPlan (eventId, eventTheme, budget, planDescription, userID) VALUES (?,?,?,?,?)");
             // Set values for the prepared statement parameters
             ps.setInt(1, eventPlan.getEventId());
             ps.setString(2, eventPlan.getTheme());
             ps.setDouble(3, eventPlan.getBudget());
             ps.setString(4, eventPlan.getPlanDescription());
+            ps.setInt(5, eventPlan.getUserID());
 
             if (ps.executeUpdate() > 0) {
                 System.out.println("Event added successfully");
@@ -103,13 +104,14 @@ public class EventPlanDBUtil {
             Connection con = DBConnection.connectDB();
 
             // Create a PreparedStatement object to execute the query
-            PreparedStatement ps = con.prepareStatement("UPDATE EventPlan SET eventId=?, eventTheme=?, budget=?, planDescription=? WHERE eventPlanId=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE EventPlan SET eventId=?, eventTheme=?, budget=?, planDescription=?, userID=? WHERE eventPlanId=?");
 
-            ps.setInt(5, eventPlan.getEventPlanId());
             ps.setInt(1, eventPlan.getEventId());
             ps.setString(2, eventPlan.getTheme());
             ps.setDouble(3, eventPlan.getBudget());
             ps.setString(4, eventPlan.getPlanDescription());
+            ps.setInt(5, eventPlan.getUserID());
+            ps.setInt(6, eventPlan.getEventPlanId());
 
             if (ps.executeUpdate() > 0) {
                 System.out.println("Event Plan updated successfully");
@@ -143,6 +145,47 @@ public class EventPlanDBUtil {
             if (resultSet.next()) {
                 // Extract data from the result set and create an EventPlan object
                 eventPlan = new EventPlan();
+                eventPlan.setUserID(resultSet.getInt("userID"));
+                eventPlan.setEventPlanId(resultSet.getInt("eventPlanId"));
+                eventPlan.setEventId(resultSet.getInt("eventId"));
+                eventPlan.setTheme(resultSet.getString("eventTheme"));
+                eventPlan.setBudget(resultSet.getDouble("budget"));
+                eventPlan.setPlanDescription(resultSet.getString("planDescription"));
+            }
+
+            // Close the ResultSet, PreparedStatement, and connection
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return eventPlan;
+    }
+
+    public static EventPlan getEventPlanByEventId(int eventId) {
+        EventPlan eventPlan = null;
+        try {
+            // Create a connection to the database
+            Connection connection = DBConnection.connectDB();
+
+            // Define the SQL query to select the event plan by ID
+            String sql = "SELECT * FROM EventPlan WHERE eventId=? LIMIT 1";
+
+            // Create a PreparedStatement object to execute the query
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, eventId);
+
+            // Execute the query and retrieve the result set
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Check if the result set has any rows
+            if (resultSet.next()) {
+                // Extract data from the result set and create an EventPlan object
+                eventPlan = new EventPlan();
+                eventPlan.setUserID(resultSet.getInt("userID"));
                 eventPlan.setEventPlanId(resultSet.getInt("eventPlanId"));
                 eventPlan.setEventId(resultSet.getInt("eventId"));
                 eventPlan.setTheme(resultSet.getString("eventTheme"));

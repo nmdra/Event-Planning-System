@@ -11,10 +11,16 @@
     <h1>Create Plan</h1>
     <%-- Read eventId from request parameter --%>
     <% String eventId = request.getParameter("eventId"); %>
+
+    <% String userID = request.getParameter("userId"); %>
+
     <%-- Check if eventId is not null or empty --%>
     <% if (eventId != null && !eventId.isEmpty()) { %>
     <form action="createPlan" method="post">
         <%-- Use hidden input field to pass eventId to servlet --%>
+
+            <input type="hidden" id="userID" name="userID" value="<%= userID %>" class="form-control">
+
             <div class="form-group">
             <label for="eventId">Event ID: </label>
             <input type="text" id="eventId" name="eventId" value="<%= eventId %>" class="form-control" readonly>

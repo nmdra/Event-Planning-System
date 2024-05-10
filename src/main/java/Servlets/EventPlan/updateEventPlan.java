@@ -42,6 +42,7 @@ public class updateEventPlan extends HttpServlet {
         response.setContentType("text/html");
 
         // Retrieve form data from the request
+        int userId = Integer.parseInt(request.getParameter("userID"));
         int eventId = Integer.parseInt(request.getParameter("eventId"));
         int eventPlanId = Integer.parseInt(request.getParameter("eventPlanId"));
         double budget = Double.parseDouble(request.getParameter("budget"));
@@ -51,7 +52,7 @@ public class updateEventPlan extends HttpServlet {
         System.out.println(eventId + " " + budget + " " + planDescription + " " + theme);
 
         // Create an EventPlan object with the updated details
-        EventPlan eventPlan = new EventPlan(eventPlanId,eventId,budget,planDescription,theme);
+        EventPlan eventPlan = new EventPlan(eventPlanId,eventId,budget,planDescription,theme,userId);
 
         // Call the method to update the event plan in the database
         boolean success = EventPlanDBUtil.updateEventPlan(eventPlan);

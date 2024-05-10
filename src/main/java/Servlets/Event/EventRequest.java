@@ -41,7 +41,7 @@ public class EventRequest extends HttpServlet {
                 if (EventDBUtils.addEvent(event)) {
                     out.println("<script type='text/javascript'>");
                     out.println("alert('Event added to database.');");
-                    out.println("location='eventList'");
+                    out.println("location='viewEvent'");
                     out.println("</script>");
                 } else {
                     out.println("<script type='text/javascript'>");

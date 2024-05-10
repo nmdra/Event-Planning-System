@@ -2,7 +2,7 @@ package Models.Event;
 
 public class EventPlan {
 
-
+    private int userID;
     private int eventPlanId;
     private int eventId;
     private double budget;
@@ -15,24 +15,25 @@ public class EventPlan {
         this.budget = 0;
         this.planDescription = "";
         this.theme = "";
+        this.userID = 0;
     }
 
-
-    public EventPlan(int eventPlanId, int eventId, double budget, String planDescription, String theme) {
+    public EventPlan(int eventPlanId, int eventId, double budget, String planDescription, String theme,int userID) {
         this.eventPlanId = eventPlanId;
         this.eventId = eventId;
         this.budget = budget;
         this.planDescription = planDescription;
         this.theme = theme;
+        this.userID = userID;
     }
 
-
-    public EventPlan(int eventId, double budget, String planDescription, String theme) {
+    public EventPlan(int eventId, double budget, String planDescription, String theme, int userID) {
         this.eventId = eventId;
         this.budget = budget;
         this.planDescription = planDescription;
         this.theme = theme;
         this.eventPlanId = 0;
+        this.userID = userID;
     }
 
     public int getEventPlanId() {
@@ -73,6 +74,14 @@ public class EventPlan {
 
     public void setTheme(String theme) {
         this.theme = theme;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }
 
