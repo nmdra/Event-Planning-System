@@ -71,6 +71,35 @@ public class EventDBUtils {
         return eventRequests;
     }
 
+    public static List<Event> getEventListByUserID(String userID) {
+        List<Event> eventList = new ArrayList<>();
+
+        try {
+            Connection con = DBConnection.connectDB();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Event WHERE userID = ?");
+
+            ps.setString(1, userID);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Event event = new Event();
+                event.setEventId(rs.getInt("eventId"));
+                event.setUserID(rs.getInt("userID"));
+                event.setCategory(rs.getString("category"));
+                event.setLocation(rs.getString("location"));
+                event.setDateTime(rs.getString("datetime"));
+                event.setRequirements(rs.getString("specialReq"));
+                event.setAttendees(rs.getString("attendees"));
+
+                eventList.add(event);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return eventList;
+    }
+
     public static boolean deleteEvent(String eventId) {
         try {
             // Create connection with the database

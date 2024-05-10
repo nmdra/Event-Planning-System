@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,16 +7,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-    <h1>Event List</h1>
+<%@ include file="header.jsp" %>
+
+<div class="container text-center">
+    <h1>My Event List</h1>
 
     <input type="text" id="searchInput" class="form-control" placeholder="Search...">
 
-    <table class="table table-striped table-bordered table-hover text-center mt-3">
+    <table class="table table-striped table-bordered table-hover text-center">
         <thead class="thead-dark">
         <tr>
             <th scope="col">ID #</th>
-            <th scope="col">User ID #</th>
             <th scope="col">Category</th>
             <th scope="col">DateTime</th>
             <th scope="col">Location</th>
@@ -32,7 +31,6 @@
         <c:forEach var="event" items="${eventList}">
             <tr>
                 <td>${event.eventId}</td>
-                <td>${event.userID}</td>
                 <td>${event.category}</td>
                 <td>${event.dateTime}</td>
                 <td>${event.location}</td>
@@ -40,7 +38,7 @@
                 <td>${event.requirements}</td>
                 <td colspan="2">
                     <a href="deleteEvent?eventId=${event.eventId}" class="btn btn-danger btn-sm">Delete</a> <!-- Example delete link/button -->
-                    <a href="CreatePlan.jsp?eventId=${event.eventId}&userId=${event.userID}" class="btn btn-primary btn-sm">Create Plan</a>
+                    <a href="viewEventPlan?eventId=${event.eventId}" class="btn btn-primary btn-sm">View Plan</a>
                 </td>
             </tr>
         </c:forEach>

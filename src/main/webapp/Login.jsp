@@ -13,10 +13,10 @@
         justify-content: center;
         align-items: center;
         height: 80%;
-        width: 50%;
+        width: 50vw;
         background: aliceblue;
         border: 1px solid deepskyblue; /* Box around form container */
-        padding: 10px; /* Add padding inside the box */
+        padding: 20px; /* Add padding inside the box */
         border-radius: 10px; /* Optional: rounded corners */
         margin-top: 20vh;
     }
@@ -26,7 +26,9 @@
 
 <body>
 
-<div class="container form-container text-center">
+<%@ include file="header.jsp" %>
+
+<div class="form-container container  text-center">
     <form action="LoginServlet" method = "POST" class="col-md-7">
 
         <h1>User Login</h1>

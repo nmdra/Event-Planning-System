@@ -30,7 +30,6 @@ public class Event {
         this.eventId = 0;
     }
 
-
     public Event(int eventId,int userID, String location, String category, String attendees, String requirements, String dateTime) {
         this.eventId = eventId;
         this.userID = userID;

@@ -27,3 +27,5 @@ replay_pid*
 build
 target
 .run
+.classpath
+.project

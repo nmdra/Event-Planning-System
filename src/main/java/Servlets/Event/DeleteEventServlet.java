@@ -26,15 +26,16 @@ public class DeleteEventServlet extends HttpServlet {
         boolean success = EventDBUtils.deleteEvent(eventId);
 
         // Send response indicating success or failure
+
         if (success) {
             out.println("<script type='text/javascript'>");
             out.println("alert('Event deleted');");
-            out.println("location='eventList'");
+            out.println("history.back();"); // Redirect to previous page
             out.println("</script>");
         } else {
             out.println("<script type='text/javascript'>");
             out.println("alert('Event could not be deleted');");
-            out.println("location='eventList'");
+            out.println("history.back();"); // Redirect to previous page
             out.println("</script>");
         }
     }

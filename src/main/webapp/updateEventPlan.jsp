@@ -14,6 +14,11 @@
     <form action="updateEventPlan" method="post">
 
         <div class="form-group">
+            <label for="userID">User ID: </label>
+            <input type="text" id="userID" name="userID" value="${eventPlan.userID}" class="form-control" readonly>
+        </div>
+
+        <div class="form-group">
             <label for="eventPlanId">Event Plan ID: </label>
             <input type="text" id="eventPlanId" name="eventPlanId" value="${eventPlan.eventPlanId}" class="form-control" readonly>
         </div>

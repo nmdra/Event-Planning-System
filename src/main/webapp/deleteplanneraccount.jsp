@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>delete profile page</title>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,14 +64,12 @@
         String email = request.getParameter("email");
         String position = request.getParameter("position");
         String username = request.getParameter("username");
-
     %>
     
     <div class = "delete-container">  
     <form action="deleteStaffAccount" method = "post">
     
     <br><br> 
-
         <h1> Update Profile Page</h1>
 
         <table class="delete table-table">
@@ -86,8 +83,6 @@
      <input type = "submit" name = "delete" value = "delete">
 
    </form>
-   
    </div>
-   
 </body>
 </html>

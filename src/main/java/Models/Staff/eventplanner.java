@@ -22,8 +22,6 @@ public class eventplanner {
 		return plannerid;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
@@ -32,30 +30,21 @@ public class eventplanner {
 		return email;
 	}
 
-
 	public String getUsername() {
 		return username;
 	}
-
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
-
 	public String getPosition() {
 		return position;
 	}
 
-
-
 	public void setPlanner(String plannerid) {
 		this.plannerid = plannerid;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;
@@ -65,18 +54,13 @@ public class eventplanner {
 		this.email = email;
 	}
 
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 
 	public void setPosition(String position) {
 		this.position = position;

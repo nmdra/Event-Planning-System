@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 import java.io.IOException;
 import java.io.Serial;
@@ -19,7 +20,10 @@ public class DeleteStaffAccountServlet extends HttpServlet {
 	@Serial
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
 
 		String positionstaff = request.getParameter("position");
 
@@ -33,8 +37,12 @@ public class DeleteStaffAccountServlet extends HttpServlet {
 
 			if(isTrue == true) {
 
-				RequestDispatcher dis = request.getRequestDispatcher("Home.jsp");
-				dis.forward(request, response);
+				out.println("<script type='text/javascript'>");
+				out.println("alert('Account deleted');");
+				out.println("location= 'Home.jsp'");
+				out.println("</script>");
+//				RequestDispatcher dis = request.getRequestDispatcher("Home.jsp");
+//				dis.forward(request, response);
 			}
 
 			else {
@@ -44,10 +52,16 @@ public class DeleteStaffAccountServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("eventplanner_details", eventplanner_details);
 
-				request.setAttribute("updateMessage", "Update was unsuccessful.");
 
-				RequestDispatcher dis = request.getRequestDispatcher("eventplannerprofile.jsp");
-				dis.forward(request, response);
+				out.println("<script type='text/javascript'>");
+				out.println("alert('Account deleted');");
+				out.println("location= 'eventplannerprofile.jsp'");
+				out.println("</script>");
+
+//				request.setAttribute("updateMessage", "Update was unsuccessful.");
+//
+//				RequestDispatcher dis = request.getRequestDispatcher("eventplannerprofile.jsp");
+//				dis.forward(request, response);
 			}
 		}
 

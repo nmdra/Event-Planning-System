@@ -5,7 +5,6 @@
   Time: 12:35
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -23,10 +22,13 @@
             border: 1px solid deepskyblue; /* Box around form container */
             padding: 10px; /* Add padding inside the box */
             border-radius: 10px; /* Optional: rounded corners */
-            margin-top: 20vh;
+            margin-top: 10vh;
         }
     </style>
 </head>
+
+<%@ include file="header.jsp" %>
+
 <body>
 <div class="container form-container">
     <form action="eventRequest" method="POST" class="col-md-7" novalidate>
