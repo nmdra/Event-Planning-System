@@ -38,8 +38,7 @@ public class UserDbUtils {
 
         try {
             Connection con = DBConnection.connectDB();
-            String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ? limit 1");
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();

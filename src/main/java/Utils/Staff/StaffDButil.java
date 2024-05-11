@@ -194,17 +194,16 @@ public class StaffDButil {
 		return isSuccess;
 	}
 
-	public static Admin getAdminDetails(String adminId) {
+	public static Admin getAdmin(String username, String password) {
 		Admin admin = null;
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
 		try {
-			conn = DBConnection.connectDB();
-			stmt = conn.createStatement();
-			String sql = "SELECT * FROM admin WHERE adminid = '" + adminId + "'";
-			rs = stmt.executeQuery(sql);
+			Connection con = DBConnection.connectDB();
+
+			PreparedStatement ps = con.prepareStatement("select * from eventplanner Where username = ? AND password = ? AND position = 'admin'");
+			ps.setString(1, username);
+			ps.setString(2, password);
+
+			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
 				admin = new Admin();
@@ -212,7 +211,6 @@ public class StaffDButil {
 				admin.setName(rs.getString(2));
 				admin.setEmail(rs.getString(3));
 				admin.setUsername(rs.getString(4));
-				admin.setPassword(rs.getString(5));
 				admin.setPosition(rs.getString(6));
 			}
 		} catch (SQLException | ClassNotFoundException e) {
