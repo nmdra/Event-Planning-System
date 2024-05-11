@@ -1,5 +1,6 @@
 package Servlets.Staff;
 
+import Models.Staff.Admin;
 import Models.Staff.eventplanner;
 import Utils.Staff.StaffDButil;
 
@@ -29,7 +30,6 @@ public class staffLoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String position = request.getParameter("position");
 
-
 		boolean isTrue ;
 
 		isTrue = StaffDButil.validatelogin(username, password,position);
@@ -42,12 +42,27 @@ public class staffLoginServlet extends HttpServlet {
 			session1.setAttribute("position", position);
 
 
-			if("admin".equals(position)) {
+		/*	if("admin".equals(position)) {
 
+				String loggingSuccess = "Logging Success!";
+				request.setAttribute("loginMsg", loggingSuccess);
+
+				Admin adminDetails = StaffDButil.getAdmin(username, password);
+
+				if (adminDetails != null) {
+					HttpSession session = request.getSession();
+					session.setAttribute("adminDetails", adminDetails);
+
+					RequestDispatcher dispatcher = request.getRequestDispatcher("adminDashboard.jsp");
+					dispatcher.forward(request, response);
+				} else {
+					// Handle login failure
+					// Redirect to login page with appropriate message
+				}
 				RequestDispatcher dispatcher = request.getRequestDispatcher("adminDashboard.jsp");
 				dispatcher.forward(request, response);
 			}
-
+*/
 
 			if("eventplanner".equals(position)) {
 
@@ -63,7 +78,6 @@ public class staffLoginServlet extends HttpServlet {
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("eventplannerDashboard.jsp");
 					dispatcher.forward(request, response);
-
 
 
 				} catch (Exception e) {
