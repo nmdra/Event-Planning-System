@@ -18,7 +18,7 @@
     User user = null;
     if (session1 != null) {
         user = (User) session1.getAttribute("user");
-    } else{
+
     }
 %>
 
