@@ -1,7 +1,7 @@
 package Servlets.User;
 
 import Models.User;
-import Utils.UserDbUtils;
+import Utils.User.UserDbUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import Models.User;
-import Utils.UserDbUtils;
+import Utils.User.UserDbUtils;
 
 @WebServlet("/userRegister")
 public class userRegister extends HttpServlet {

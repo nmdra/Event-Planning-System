@@ -2,6 +2,7 @@ package Servlets.Staff;
 
 import Models.Staff.Admin;
 import Models.Staff.eventplanner;
+import Utils.Admin.AdminDbUtil;
 import Utils.Staff.StaffDButil;
 
 import java.io.IOException;
@@ -32,12 +33,11 @@ public class staffLoginServlet extends HttpServlet {
 
 		if("admin".equals(position)) {
 
-			Admin adminDetails = StaffDButil.getAdmin(username, password);
+			Admin adminDetails = AdminDbUtil.getAdmin(username, password);
 
 			if (adminDetails != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("adminDetails", adminDetails);
-				System.out.println("test");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("adminDashboard.jsp");
 				dispatcher.forward(request, response);
 			} else {
@@ -46,8 +46,6 @@ public class staffLoginServlet extends HttpServlet {
 				out.println("alert('Your username or password is incorrect');");
 				out.println("location='Staff-Login.jsp'");
 				out.println("</script>");
-				// Handle login failure
-				// Redirect to login page with appropriate message
 			}
 
 		}
@@ -71,7 +69,6 @@ public class staffLoginServlet extends HttpServlet {
 		}
 
 	}
-
 
 }
 

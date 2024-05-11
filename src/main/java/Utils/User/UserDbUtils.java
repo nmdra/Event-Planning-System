@@ -1,6 +1,7 @@
-package Utils;
+package Utils.User;
 
 import Models.User;
+import Utils.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

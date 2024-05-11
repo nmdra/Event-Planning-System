@@ -26,7 +26,8 @@
                 <a href="customers.jsp" class="btn btn-primary btn-lg btn-custom">Customers</a>
                 <a href="eventplanners.jsp" class="btn btn-success btn-lg btn-custom">Event Planners</a>
                 <a href="events.jsp" class="btn btn-info btn-lg btn-custom">Events</a>
-                <a href="adminprofile.jsp" class="btn btn-warning btn-lg btn-custom">Admin Profile</a>
+                <a href="adminProfile.jsp" class="btn btn-warning btn-lg btn-custom">Admin Profile</a>
+                <a href="addNewAdmin.jsp" class="btn btn-info btn-lg btn-custom">Add New Admin</a>
             </div>
         </div>
     </div>
