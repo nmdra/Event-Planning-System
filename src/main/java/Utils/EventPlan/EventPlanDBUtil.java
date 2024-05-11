@@ -65,8 +65,8 @@ public class EventPlanDBUtil {
                 // Add the EventPlan object to the list
                 eventPlans.add(eventPlan);
             }
-        } finally {
-            // Close resources in a finally block to ensure they're closed regardless of exceptions
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
         }
 
         return eventPlans;

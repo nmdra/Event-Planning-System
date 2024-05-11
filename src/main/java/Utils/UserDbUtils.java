@@ -38,8 +38,7 @@ public class UserDbUtils {
 
         try {
             Connection con = DBConnection.connectDB();
-            String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ? limit 1");
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
@@ -76,5 +75,30 @@ public class UserDbUtils {
             // Handle any database errors here
             return false;
         }
+    }
+
+    public static boolean updateUser(User user2) {
+
+        try {
+            //creating connection with the database
+            Connection con = DBConnection.connectDB();
+
+            PreparedStatement ps = con.prepareStatement("UPDATE UserRegistrationDB.users SET name = ?, email = ?, password = ? WHERE id = ? ");
+
+            ps.setString(1, user2.getName());
+            ps.setString(2, user2.getEmail());
+            ps.setString(3, user2.getPassword());
+            ps.setInt(4, user2.getId());
+
+            if (ps.executeUpdate() > 0) {
+                System.out.println("User Update successfully");
+                return true;
+            }
+
+        } catch (Exception se) {
+            se.printStackTrace();
+        }
+
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package Servlets.Staff;
 
+import Models.Staff.Admin;
 import Models.Staff.eventplanner;
 import Utils.Staff.StaffDButil;
 
@@ -29,62 +30,48 @@ public class staffLoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String position = request.getParameter("position");
 
+		if("admin".equals(position)) {
 
-		boolean isTrue ;
+			Admin adminDetails = StaffDButil.getAdmin(username, password);
 
-		isTrue = StaffDButil.validatelogin(username, password,position);
-
-		if(isTrue == true) {
-
-			HttpSession session1 = request.getSession(true);
-			session1.setAttribute("username", username);
-			session1.setAttribute("password", password);
-			session1.setAttribute("position", position);
-
-
-			if("admin".equals(position)) {
-
+			if (adminDetails != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("adminDetails", adminDetails);
+				System.out.println("test");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("adminDashboard.jsp");
 				dispatcher.forward(request, response);
-			}
+			} else {
 
-
-			if("eventplanner".equals(position)) {
-
-				try {
-
-					String loggingSuccess = "Logging Success!";
-					request.setAttribute("loginMsg", loggingSuccess);
-
-					eventplanner eventplanner_details= StaffDButil.geteventplanner(username, password, position);
-
-					HttpSession session = request.getSession();
-					session.setAttribute("eventplanner_details", eventplanner_details);
-
-					RequestDispatcher dispatcher = request.getRequestDispatcher("eventplannerDashboard.jsp");
-					dispatcher.forward(request, response);
-
-
-
-				} catch (Exception e) {
-
-					e.printStackTrace();
-
-				}
-
-
+				out.println("<script type='text/javascript'>");
+				out.println("alert('Your username or password is incorrect');");
+				out.println("location='Staff-Login.jsp'");
+				out.println("</script>");
+				// Handle login failure
+				// Redirect to login page with appropriate message
 			}
 
 		}
 
-		else {
+		if("eventplanner".equals(position)) {
 
-			out.println("<script type='text/javascript'>");
-			out.println("alert('Your username or password is incorrect');");
-			out.println("location='Login.jsp'");
-			out.println("</script>");
+			eventplanner eventplanner_details= StaffDButil.geteventplanner(username, password, position);
+			if (eventplanner_details != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("eventplanner_details", eventplanner_details);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("eventplannerDashboard.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				out.println("<script type='text/javascript'>");
+				out.println("alert('Your username or password is incorrect');");
+				out.println("location='Staff-Login.jsp'");
+				out.println("</script>");
+			}
+
 		}
 
 	}
 
+
 }
+

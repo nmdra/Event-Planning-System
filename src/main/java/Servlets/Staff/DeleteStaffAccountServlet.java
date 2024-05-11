@@ -52,7 +52,6 @@ public class DeleteStaffAccountServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("eventplanner_details", eventplanner_details);
 
-
 				out.println("<script type='text/javascript'>");
 				out.println("alert('Account deleted');");
 				out.println("location= 'eventplannerprofile.jsp'");
