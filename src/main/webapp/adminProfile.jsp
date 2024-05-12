@@ -24,7 +24,8 @@
             <tr><td>User Name</td>       <td>${adminDetails.username}</td></tr>
         </table>
             <a href="${updatedetails}" class="btn btn-primary">Update</a>
-            <a href="deleteAdminServlet?Id=${adminDetails.adminId}" class="btn btn-danger">Delete My Account</a>
+        <a href="staffLogout" class="btn btn-danger">LogOut</a>
+        <a href="deleteAdminServlet?Id=${adminDetails.adminId}" class="btn btn-danger">Delete My Account</a>
     </form>
 </div>
 

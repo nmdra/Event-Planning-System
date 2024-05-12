@@ -37,13 +37,13 @@ public class UpdateUserServlet extends HttpServlet {
 
         if (UserDbUtils.updateUser(user2)) {
             out.println("<script type='text/javascript'>");
-            out.println("alert('User details updated successfully');");
-            out.println("location='UserProfile.jsp'"); // Redirect to user2 profile page after update
+            out.println("alert('User details updated successfully. Please Login.');");
+            out.println("location='Login.jsp'");
             out.println("</script>");
         } else {
             out.println("<script type='text/javascript'>");
-            out.println("alert('Failed to update user2 details. Please try again');");
-            out.println("location='UserProfile.jsp'"); // Redirect to user2 profile page
+            out.println("alert('Failed to update User details. Please try again');");
+            out.println("location='userProfile.jsp'");
             out.println("</script>");
         }
     }

@@ -1,12 +1,16 @@
 package Utils.Admin;
 
 import Models.Staff.Admin;
+import Models.Staff.eventplanner;
+import Models.User;
 import Utils.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminDbUtil {
     public static Admin getAdmin(String username, String password) {
@@ -88,4 +92,65 @@ public class AdminDbUtil {
         return success;
     }
 
+    public static List<eventplanner> getStaffList() {
+        List<eventplanner> staffList = new ArrayList<>();
+
+        try {
+            Connection con = DBConnection.connectDB();
+
+            PreparedStatement ps = con.prepareStatement("select * from eventplanner");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                eventplanner staff = new eventplanner();
+                staff.setPlanner(rs.getString(1));
+                staff.setName(rs.getString(2));
+                staff.setEmail(rs.getString(3));
+                staff.setUsername(rs.getString(4));
+                staff.setPosition(rs.getString(6));
+
+                staffList.add(staff);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return staffList;
+
+    }
+
+
+    public List<User> getUserList() {
+        List<User> userList = new ArrayList<>();
+
+        try {
+            Connection con = DBConnection.connectDB();
+
+            PreparedStatement ps = con.prepareStatement("select * from users");
+            
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int userId = rs.getInt(1);
+                String username = rs.getString(2);
+                String password = rs.getString(3);
+                String position = rs.getString(4);
+                String email = rs.getString(5);
+
+                User user = new User(userId, username, password, position, email);
+
+                userList.add(user);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+
+    }
 }
+
+

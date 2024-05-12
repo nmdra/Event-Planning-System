@@ -65,6 +65,9 @@
           <a href="viewEvent" class="btn btn-primary btn-block">View My Event List</a>
         </div>
         <div class="col-md-6 mb-3">
+          <a href="updateUser.jsp" class="btn btn-primary btn-block">Update My Details</a>
+        </div>
+        <div class="col-md-6 mb-3">
           <a href="LogoutServlet" class="btn btn-danger btn-block">Logout</a>
         </div>
         <div class="col-md-6 mb-3">

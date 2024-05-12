@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Models.User" %><%--
   Created by IntelliJ IDEA.
   Servlets: nimendra
   Date: 01/05/2024
@@ -51,7 +51,14 @@
 </head>
 <body>
 
-<%@ include file="header.jsp" %>
+<%
+    // Retrieve session object
+    HttpSession session1 = request.getSession(false);
+    User user = null;
+    if (session1 != null) {
+        user = (User) session1.getAttribute("user");
+    }
+%>
 
 <div class="container form-container ">
     <form action="updateUser" method="POST" onsubmit="return ValidatePassword(document.getElementById('password'), document.getElementById('confirmPassword'));" class="col-md-7">

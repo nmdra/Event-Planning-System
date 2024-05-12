@@ -32,7 +32,7 @@
             <%-- Check if user is logged in --%>
             <%    if (user != null) { %>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Welcome, <%= user.getUsername() %></a>
+                <a class="nav-link" href="userProfile.jsp">Welcome, <%= user.getUsername() %></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="LogoutServlet">Logout</a>

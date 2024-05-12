@@ -26,11 +26,13 @@ public class DeleteStaffAccountServlet extends HttpServlet {
 		response.setContentType("text/html");
 
 		String positionstaff = request.getParameter("position");
+		System.out.println(positionstaff);
 
-		if ("Planner".equals(positionstaff)) {
+
+		if ("eventplanner".equals(positionstaff)) {
 
 			String plannerid = request.getParameter("plannerid");
-
+			System.out.println(plannerid);
 			boolean isTrue ;
 
 			isTrue = StaffDButil.deletplanneraccount(plannerid);
@@ -39,7 +41,7 @@ public class DeleteStaffAccountServlet extends HttpServlet {
 
 				out.println("<script type='text/javascript'>");
 				out.println("alert('Account deleted');");
-				out.println("location= 'Home.jsp'");
+				out.println("window.history.go(-2);"); // Go back to the previous page
 				out.println("</script>");
 //				RequestDispatcher dis = request.getRequestDispatcher("Home.jsp");
 //				dis.forward(request, response);

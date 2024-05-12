@@ -1,0 +1,184 @@
+/* Reset */
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/* Global Styles */
+body {
+    font-family: "Reddit Sans", sans-serif;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+/* NavBar */
+.logo-name h1 {
+    font-size: 2rem;
+}
+
+.menu_list {
+    list-style-type: none;
+}
+
+.menu_list li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.cta-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    border: 1px solid black;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Hero Section */
+.heading {
+    font-size: 4rem;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.highlight {
+    color: #8a2be2;
+}
+
+.description {
+    font-size: 1.6rem;
+}
+
+.primary-btn {
+    background-color: #8a2be2;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    background-color: black;
+}
+
+/* Process Section */
+.process-section {
+    padding-bottom: 10rem;
+    /*padding-top: 10px;*/
+}
+
+.section-heading {
+    text-align: center;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.process-item {
+    border: 1px solid #8a2be2;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.number {
+    font-size: 6rem;
+    font-weight: bold;
+}
+
+.process-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #8a2be2;
+}
+
+.process-description {
+    font-size: 1.6rem;
+}
+
+/* Event Apply CTA Section */
+.cta-section {
+    padding-bottom: 10rem;
+    padding-top: 20px;
+}
+
+.cta-bg {
+    background-color: #8a2be2;
+    border-radius: 20px;
+    padding: 50px 0;
+}
+
+.cta-content {
+    text-align: center;
+}
+
+.cta-heading {
+    font-size: 6rem;
+    color: white;
+    padding-bottom: 5rem;
+}
+
+.cta-btn {
+    background-color: white;
+    color: #8a2be2;
+    padding: 12px 24px;
+    font-size: 1.6rem;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.cta-btn:hover {
+    background-color: #8a2be2;
+    color: white;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .logo-name h1 {
+        font-size: 1.5rem;
+    }
+
+    .heading {
+        font-size: 3rem;
+    }
+
+    .highlight {
+        font-size: 3rem;
+    }
+
+    .description {
+        font-size: 1.2rem;
+    }
+
+    .primary-btn {
+        font-size: 1.2rem;
+    }
+
+    .process-title {
+        font-size: 2rem;
+    }
+
+    .process-description {
+        font-size: 1.2rem;
+    }
+
+    .cta-heading {
+        font-size: 4rem;
+    }
+
+    .cta-btn {
+        font-size: 1.2rem;
+    }
+}

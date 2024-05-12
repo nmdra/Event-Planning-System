@@ -25,7 +25,7 @@ public class DeleteUserServlet extends HttpServlet {
         if (deleted) {
             out.println("<script type='text/javascript'>");
             out.println("alert('User deleted');");
-            out.println("location='Register.jsp'");
+            out.println("window.history.go(-1);"); // Go back to the previous page
             out.println("</script>");
         } else {
             // Redirect to an error page or display an error message
