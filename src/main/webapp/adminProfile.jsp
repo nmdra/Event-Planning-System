@@ -23,8 +23,8 @@
             <tr><td>Position</td>        <td>${adminDetails.position}</td></tr>
             <tr><td>User Name</td>       <td>${adminDetails.username}</td></tr>
         </table>
-            <a href="${updatedetails}" class="btn btn-primary">Update</a>
-        <a href="staffLogout" class="btn btn-danger">LogOut</a>
+
+        <a href="adminLogoutServlet" class="btn btn-danger">LogOut</a>
         <a href="deleteAdminServlet?Id=${adminDetails.adminId}" class="btn btn-danger">Delete My Account</a>
     </form>
 </div>

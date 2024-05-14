@@ -50,7 +50,7 @@ public class updateStaffProfileServlet extends HttpServlet {
 
 				out.println("<script type='text/javascript'>");
 				out.println("alert('Update Successful');");
-				out.println("window.history.go(-2);"); // Go back to the previous page
+				out.println("location='staffList'");
 				out.println("</script>");
 //				RequestDispatcher dis = request.getRequestDispatcher("eventplannerprofile.jsp");
 //				dis.forward(request, response);

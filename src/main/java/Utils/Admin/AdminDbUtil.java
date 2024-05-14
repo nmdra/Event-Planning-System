@@ -149,8 +149,36 @@ public class AdminDbUtil {
         }
 
         return userList;
-
     }
+
+    public static boolean addStaff(eventplanner planner) {
+
+        try {
+            //creating connection with the database
+            Connection con = DBConnection.connectDB();
+
+            PreparedStatement ps = con.prepareStatement("INSERT INTO eventplanner(plannerid, name, email, username, password, position) values (?,?,?,?,?,?)");
+
+            ps.setString(1, planner.getPlannerid());
+            ps.setString(2, planner.getName());
+            ps.setString(3, planner.getEmail());
+            ps.setString(4, planner.getUsername());
+            ps.setString(5, planner.getPassword());
+            ps.setString(6, planner.getPosition());
+
+            if (ps.executeUpdate() > 0) {
+                System.out.println("Planner added successfully");
+                return true;
+            }
+
+        } catch (Exception se) {
+            se.printStackTrace();
+        }
+
+        return false;
+    }
+
+
 }
 
 

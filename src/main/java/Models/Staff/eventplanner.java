@@ -18,6 +18,11 @@ public class eventplanner {
 		this.position = " ";
 	}
 
+	public void setPlannerid(String plannerid) {
+		this.plannerid = plannerid;
+	}
+
+
 	public String getPlannerid() {
 		return plannerid;
 	}
